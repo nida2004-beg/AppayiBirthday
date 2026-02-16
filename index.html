@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Pappayii!</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background-color: #fdfaf6; 
+            color: #4a4a4a;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .header {
+            padding: 100px 20px;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+                        url('https://www.transparenttextures.com/patterns/stardust.png');
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .stars {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            padding: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Organic tilting for that "scattered photos" look */
+        .photo-card:nth-child(1) { transform: rotate(-3deg); }
+        .photo-card:nth-child(2) { transform: rotate(2deg); }
+        .photo-card:nth-child(3) { transform: rotate(-1deg); }
+        .photo-card:nth-child(4) { transform: rotate(4deg); }
+
+        .photo-card:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            filter: sepia(10%) contrast(105%);
+        }
+
+        .message-section {
+            padding: 60px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .pop-button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .pop-button:hover {
+            background-color: #d4af37;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="header">
+        <div class="stars">✦ ✦ ✦ ✦ ✦</div>
+        <h1>Happy Birthday, Pappayii</h1>
+        <p>To the man who taught us everything.</p>
+        <button class="pop-button" onclick="celebrate()">Click for a Surprise! 🎉</button>
+    </section>
+
+    <section class="photo-gallery">
+        <div class="photo-card">
+          <img src="dad1.jpeg" alt="Memory 1">
+        </div>
+        <div class="photo-card">
+            <img src="dad4.jpeg" alt="Memory 2">
+        </div>
+        <div class="photo-card">
+            <img src="dad3.jpeg" alt="Memory 3">
+        </div>
+        <div class="photo-card">
+            <img src="dad2.jpeg" alt="Memory 4">
+        </div>
+    </section>
+
+    <section class="message-section">
+        <p><em>"A father is someone you look up to no matter how tall you grow."</em></p>
+        <p>Dad, thank you for the endless support, the bad jokes, and the quiet strength. Today is all about celebrating you. We love you!</p>
+    </section>
+
+    <script>
+        function celebrate() {
+            var duration = 3 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+              confetti({
+                particleCount: 4,
+                angle: 60,
+                spread: 60,
+                origin: { x: 0, y: 0.6 },
+                colors: ['#d4af37', '#2c3e50', '#fdfaf6']
+              });
+              confetti({
+                particleCount: 4,
+                angle: 120,
+                spread: 60,
+                origin: { x: 1, y: 0.6 },
+                colors: ['#d4af37', '#2c3e50', '#fdfaf6']
+              });
+
+              if (Date.now() < end) {
+                requestAnimationFrame(frame);
+              }
+            }());
+        }
+        
+        window.onload = celebrate;
+    </script>
+</body>
+</html>
